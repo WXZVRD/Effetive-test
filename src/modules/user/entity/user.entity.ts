@@ -17,7 +17,7 @@ export class UserEntity{
     middleName?: string;
 
     @Column()
-    birth?: Date;
+    birth?: string;
 
     @Column({ unique: true })
     email?: string;
