@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-export class AuthController {
+class AuthController {
     async register(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             res.json({ message: 'Hello, world REGISTER' });
@@ -17,3 +17,5 @@ export class AuthController {
         }
     }
 }
+
+export const authController = new AuthController()
