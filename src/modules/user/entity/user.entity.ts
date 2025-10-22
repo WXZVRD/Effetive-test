@@ -19,6 +19,9 @@ export class UserEntity{
     @Column()
     birth?: Date;
 
+    @Column({ unique: true })
+    email?: string;
+
     @Column()
     passwordHash?: string;
 
