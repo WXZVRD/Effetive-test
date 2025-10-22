@@ -1,13 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
-import {UserEntity} from "../user/entity/user.entity";
-import {authService} from "./auth.service";
+import { authService } from './auth.service';
 
 class AuthController {
     async register(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            const user: UserEntity = await authService.register(req.body);
-
-            res.json({ message: 'User have been registered!', data: user });
+            const result = await authService.register(req.body);
+            res.status(201).json({
+                message: 'User registered successfully',
+                data: result,
+            });
         } catch (err) {
             next(err);
         }
@@ -15,11 +16,16 @@ class AuthController {
 
     async login(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            res.json({ message: 'Hello, world LOGIN' });
+            const { email, password } = req.body;
+            const result = await authService.login(email, password);
+            res.json({
+                message: 'Login successful',
+                data: result,
+            });
         } catch (err) {
             next(err);
         }
     }
 }
 
-export const authController = new AuthController()
+export const authController = new AuthController();
