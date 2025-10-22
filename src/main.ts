@@ -4,6 +4,8 @@ import {AppDataSource} from "./configs/database.config";
 
 async function startServer() {
     try {
+        console.log('🚀 Starting application initialization...');
+
         await AppDataSource.initialize()
         console.log(`✅ Database successfully connected!`);
 
@@ -18,7 +20,7 @@ async function startServer() {
         });
     } catch (error){
         console.error('Something went wrong: ', error);
-    }
+        process.exit(1);    }
 }
 
 startServer()
