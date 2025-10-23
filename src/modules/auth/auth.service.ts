@@ -1,9 +1,6 @@
-import {UserEntity} from "../user/entity/user.entity";
-import {userRepository} from "../user/repository/user.repository";
-import {comparePassword, hashPassword} from "./utils";
-import {UserRole} from "../user/types/roles.enum";
-import {RegisterDto} from "./dto/register.dto";
-import {generateToken} from "./utils/jwt";
+import {comparePassword, generateToken, hashPassword} from "./utils";
+import {RegisterDto} from "./dto";
+import {UserEntity, userRepository, UserRole} from "../user";
 
 
 interface IAuthService {
