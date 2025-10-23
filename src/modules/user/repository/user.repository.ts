@@ -1,6 +1,6 @@
-import {UserEntity} from "../entity/user.entity";
 import {AppDataSource} from "../../../configs/database.config";
 import {Repository} from "typeorm";
+import {UserEntity} from "../entity";
 
 interface IUserRepository {
     findById(id: number): Promise<UserEntity | null>;
@@ -34,6 +34,10 @@ class UserRepository implements IUserRepository{
     }
 
     async create(user: UserEntity): Promise<UserEntity> {
+        return await this.repo.save(user);
+    }
+
+    async save(user: UserEntity): Promise<UserEntity> {
         return await this.repo.save(user);
     }
 }
