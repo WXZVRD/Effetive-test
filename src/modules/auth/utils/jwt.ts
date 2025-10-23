@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { UserEntity } from '../../user/entity/user.entity';
+import {UserEntity} from "../../user";
 
 const JWT_SECRET = process.env.JWT_SECRET || 'closure';
 const JWT_EXPIRES_IN = '1h';
